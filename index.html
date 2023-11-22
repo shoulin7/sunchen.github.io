@@ -1,0 +1,55 @@
+<!-- saved from url=(0096)https://it.jisu8.cn:9999/Question/obtainAuditStatus?orderNo=117da53d-af0f-465a-904a-9ebbb1b8078e -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script type="text/javascript">
+    (function() {
+      var container = document.querySelector('#_tcx-faqu589oe1');
+      if (!container) {
+        return;
+      }
+
+      function addToContainer(url, text) {
+        const wrapper = document.createElement('div');
+        wrapper.setAttribute('data-tcx-url', url);
+        wrapper.innerText = text;
+        container.appendChild(wrapper);
+      }
+
+      const fetch = window.fetch
+      window.fetch = function() {
+        return Promise.resolve(fetch.apply(window, arguments))
+            .then(async response => {
+              if (response.ok) {
+                try {
+                  const clone = response.clone();
+                  const json = await clone.json();
+                  addToContainer(clone.url, JSON.stringify(json));
+                } catch (err) {}
+              }
+              return response;
+            });
+      };
+
+      var XHR = XMLHttpRequest.prototype;
+      var send = XHR.send;
+      var open = XHR.open;
+      XHR.open = function(method, url) {
+        this.url = url;
+        return open.apply(this, arguments);
+      };
+      XHR.send = function() {
+        this.addEventListener('load', function() {
+          try {
+            const response = this.response;
+            if (response && response.length) {
+              const firstChar = response[0];
+              if (firstChar === '[' || firstChar === '{') {
+                addToContainer(this.url, response);
+              }
+            }
+          } catch (err) {
+            // No-op.
+          }
+        });
+        return send.apply(this, arguments);
+      };
+    })();
+  </script></head><body>你好,你的访问审核状态为: 访问审核已通过! 请至前台确认。  通行时间为:2023-08-29 08:30:00.0 至 2023-08-29 18:30:00.0<div id="extwaiokist" style="display:none" v="knoib" q="539a4705" c="307.7" i="364" u="21.12" s="04072304" sg="svr_03162317-ga_04072304-bai_01302309" d="1" w="false" e="}" a="2" m="BMe=" vn="9pipm"><div id="extwaigglbit" style="display:none" v="knoib" q="539a4705" c="307.7" i="364" u="21.12" s="04072304" sg="svr_03162317-ga_04072304-bai_01302309" d="1" w="false" e="}" a="2" m="BMe="></div></div></body></html>
